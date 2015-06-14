@@ -1,5 +1,5 @@
 % Source: http://au.mathworks.com/matlabcentral/answers/33794-3d-surface-sine-wave
-function plot_wave(X, Y, xclick, yclick, amp, freq, phi, time_vec, amp_vec, amplitude)
+function plot_wave(X, Y, xclick, yclick, amp, freq, phi, time_vec, amplitude)
     
 k = 2*freq; % wave vector 
 zeit = clock;
@@ -22,6 +22,6 @@ grid off;
 
 surf_z = get(wave_plot_surf, 'ZData');
 
-plot_wavesum(xclick, yclick, surf_z, time_vec, amp_vec, amplitude)
+plot_wavesum(surf_z)
 
 end
