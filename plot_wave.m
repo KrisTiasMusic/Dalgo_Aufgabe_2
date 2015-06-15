@@ -22,6 +22,6 @@ grid off;
 
 surf_z = get(wave_plot_surf, 'ZData');
 
-plot_wavesum(xclick, yclick, surf_z, time_vec, amp_vec, amplitude)
+plot_wavesum(xclick, yclick, surf_z, time_vec, amp_vec)
 
 end

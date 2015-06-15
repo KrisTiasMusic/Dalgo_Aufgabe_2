@@ -17,7 +17,8 @@ freq = 5;
 phi = 0;
 
 time_vec = 0:(1/frames):10;
-ampplitude = zeros(1, length(time_vec));
+amplitude = zeros(1, length(time_vec));
+amp_vec = 0;
 
 t = timer('Period', 1/frames, ...
           'TimerFcn', @(~,~)(plot_wave(X,Y,xclick,yclick,amp,freq,phi, time_vec, amp_vec, amplitude)),...
