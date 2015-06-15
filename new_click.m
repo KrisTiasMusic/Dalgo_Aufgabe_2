@@ -30,6 +30,6 @@ h_PHI_edit(edit_num) = uicontrol('style','edit',...
                                  'callback','new_phi');
 end
 
-set(t,'TimerFcn',@(~,~)(plot_wave(X,Y,xclick,yclick,amp,freq,phi)));
+set(t,'TimerFcn',@(~,~)(plot_wave(X,Y,xclick,yclick,amp,freq,phi,xwave,ywave)));
 
 start(t);
