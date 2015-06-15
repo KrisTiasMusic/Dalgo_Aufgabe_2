@@ -6,7 +6,7 @@ len = length(xclick);
 Z = 0;
 freq = freq./(2*pi);
 Z_wave = 0;
-time_past = linspace(0,2,300);
+time_past = linspace(0,5,300);
 for click_num = 1:len
     phi_use = freq(click_num) .* (- 3 .* zeit(6) + phi(click_num));
     R = sqrt((X - xclick(click_num)).^2 + (Y - yclick(click_num)).^2);
@@ -14,7 +14,7 @@ for click_num = 1:len
     
     phi_use = freq(click_num).*(-3.*(zeit(6)-time_past)+phi(click_num));
     Z_wave = Z_wave + amp(click_num).*...
-        sin(2.*pi.*freq(click_num).*R(xwave,ywave)+phi_use);
+        sin(2.*pi.*freq(click_num).*R(ywave,xwave)+phi_use);
 end
     
 subplot(1,2,1);
@@ -28,8 +28,8 @@ set(gca,'Position',[.079 .11 .4742 .815]);
 subplot(1,2,2);
 plot(time_past,Z_wave)
 set(gca,'Position',[.5819 .11 .4 .2]);
-xlabel('Time Past in Frames (20 fps)');
+xlabel('Time Past in Seconds');
 ylim([-len len]);
-xlim([0 2]);
+xlim([0 5]);
 
 end
