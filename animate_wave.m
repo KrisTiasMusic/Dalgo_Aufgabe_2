@@ -1,3 +1,42 @@
+% Matlab-script to start a gui that shows the interaction of wave-forms in
+% a plane. It is possible to adjust amplitude, frequency and phase and to
+% show the amplitude over time at a certain point.
+
+% Usage: animate_wave
+% Uses: 
+%     plot_wave, new_amp, new_click, new_freq, new_phi, new_wave
+% Input parameter:
+%     None
+% Output parameter:
+%     None
+% Output:
+%     GUI
+
+% Author: Christoph Eike, Johannes Lühring, Max Zimmermann 
+% Version History:
+%     1.0         first implementation             12.06.2015 CR JL MZ
+%     1.1         build gui-components             13.06.2015 CR JL MZ
+%     1.2         improve gui and timer            14.06.2015 CR JL MZ
+%     1.3         make better!                     15.06.2015 CR JL MZ
+%     1.31        commentation                     15.06.2015 CR JL MZ
+
+%%
+% Copyright (C) 2015  Christoph Eike, Johannes Lühring, Max Zimmermann
+% 
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+% 
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+%%
 hfig = figure();
 set(hfig,'Position',[190 150 631 600],'Color',[1 0.6 0]);
     % new size and color of figure
@@ -53,17 +92,17 @@ h_PHI_text = uicontrol('style','text',...
 for edit_num = 1:length(xclick)
 h_AMP_edit(edit_num) = uicontrol('style','edit',...
                                  'string','',...
-                                 'position',[600 517-50*(edit_num-1) 100 40],...
+                           'position',[600 517-50*(edit_num-1) 100 40],...
                                  'callback','new_amp');
                    
 h_FREQ_edit(edit_num) = uicontrol('style','edit',...
                                   'string','',...
-                                  'position',[720 517-50*(edit_num-1) 100 40],...
+                           'position',[720 517-50*(edit_num-1) 100 40],...
                                   'callback','new_freq');
 
 h_PHI_edit(edit_num) = uicontrol('style','edit',...
                                  'string','',...
-                                 'position',[840 517-50*(edit_num-1) 100 40],...
+                           'position',[840 517-50*(edit_num-1) 100 40],...
                                  'callback','new_phi');
 end
 %     for every click create one amplitude frequency and phase edit window
