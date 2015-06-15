@@ -13,16 +13,23 @@ for click_num = 1:len
     R = sqrt((X - xclick(click_num)).^2 + (Y - yclick(click_num)).^2);
     Z = Z + amp(click_num) .* sin(2.*pi.*freq(click_num).*R + phi_use);
     
+ 
     phi_use = -2.*pi .* freq(click_num).*...
         ((zeit(6)-time_past)+phi(click_num)./360);
     Z_wave = Z_wave + amp(click_num).*...
         sin(2.*pi.*freq(click_num).*R(ywave,xwave)+phi_use);
 end
     
+xpoint = (xwave - 1) / 10 - 10;
+ypoint = (ywave - 1) / 10 - 10;
+
 subplot(1,2,1);
 surf(X,Y,Z, 'EdgeColor', 'none'); 
-zlim([-len len]);
 colormap(gray);
+hold on
+plot3(xpoint,ypoint,len+1,'.m')
+hold off
+zlim([-len len+1.1]);
 view(2);
 grid off;
 set(gca,'Position',[.079 .11 .4742 .815]);
