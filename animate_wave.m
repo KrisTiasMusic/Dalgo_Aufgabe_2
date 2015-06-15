@@ -1,5 +1,5 @@
 hfig = figure();
-set(hfig,'Position',[190 150 631 600],'Color',[1 0.8 0]);
+set(hfig,'Position',[190 150 631 600],'Color',[1 0.6 0]);
 % Position = [0.13 0.11 0.775 0.815]
 xy = -10:0.1:10;
 [X,Y] = meshgrid(xy); % create rectangullar mesh 
