@@ -3,24 +3,18 @@ function plot_wave(X, Y, xclick, yclick, amp, freq, phi, xwave, ywave)
 
 zeit = clock;
 len = length(xclick);
- 
 Z = 0;
-Z_wave = 0;
 freq = freq./(2*pi);
-time_past = linspace(0,2*pi,300);
-
+Z_wave = 0;
+time_past = linspace(0,2,300);
 for click_num = 1:len
-%     phi_use = -zeit(6) * 6 + phi(click_num);
-    phi_use = - 3 .* zeit(6) + phi(click_num);
-%     phi_use = phi(click_num);
+    phi_use = freq(click_num) .* (- 3 .* zeit(6) + phi(click_num));
     R = sqrt((X - xclick(click_num)).^2 + (Y - yclick(click_num)).^2);
     Z = Z + amp(click_num) .* sin(2.*pi.*freq(click_num).*R + phi_use);
     
-%     phi_use = phi(click_num);
-    phi_use = - (3.*zeit(6) - time_past) + phi(click_num);
-%     phi_use = - zeit(6) * 6 - time_past + phi(click_num);
-    Z_wave = Z_wave + amp(click_num) .*...
-    sin(2.*pi.*freq(click_num).*R(xwave,ywave)+phi_use); 
+    phi_use = freq(click_num).*(-3.*(zeit(6)-time_past)+phi(click_num));
+    Z_wave = Z_wave + amp(click_num).*...
+        sin(2.*pi.*freq(click_num).*R(xwave,ywave)+phi_use);
 end
     
 subplot(1,2,1);
@@ -32,9 +26,10 @@ grid off;
 set(gca,'Position',[.079 .11 .4742 .815]);
 
 subplot(1,2,2);
-plot(time_past, Z_wave);
+plot(time_past,Z_wave)
 set(gca,'Position',[.5819 .11 .4 .2]);
 xlabel('Time Past in Frames (20 fps)');
 ylim([-len len]);
-xlim([0 2*pi]);
+xlim([0 2]);
+
 end
