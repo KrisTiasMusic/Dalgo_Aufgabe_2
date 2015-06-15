@@ -33,5 +33,6 @@ set(gca,'Position',[.5819 .11 .4 .2]);
 xlabel('Time Past in Seconds');
 ylim([-len len]);
 xlim([0 5]);
+grid on
 
 end
