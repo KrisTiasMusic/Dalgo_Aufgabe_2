@@ -18,7 +18,7 @@
 %     1.1         create new edit windows          13.06.2015 CR JL MZ
 %     1.11        get to deal with delete          14.06.2015 CR JL MZ
 %     1.12        commentation                     15.06.2015 CR JL MZ
-
+%     1.13        maximum of sources = 6           16.06.2015 CR JL MZ
 %%
 delete(h_AMP_edit)
 clear h_AMP_edit
@@ -31,6 +31,18 @@ clear h_PHI_edit
 stop(t); %to change parameters of TimerFcn
 
 [xclick, yclick] = ginput; %new wave sources
+
+while length(xclick) > 6
+    h_TOOMUCH_text = uicontrol('style', 'text', ...
+      'string', 'Don`t click more than 6 times!', ...
+      'position', [215 255 200 15]);
+  
+    [xclick, yclick] = ginput;
+
+    delete(h_TOOMUCH_text)
+    clear h_TOOMUCH_text
+end
+%     limitate amount of possible wave sources to 6
 
 amp = ones(length(xclick),1);
 freq = zeros(length(xclick),1) + 5;
