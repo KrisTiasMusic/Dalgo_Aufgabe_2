@@ -19,6 +19,7 @@
 %     1.2         improve gui and timer            14.06.2015 CR JL MZ
 %     1.3         make better!                     15.06.2015 CR JL MZ
 %     1.31        commentation                     15.06.2015 CR JL MZ
+%     1.32        maximum of sources = 6           16.06.2015 CR JL MZ
 
 %%
 % Copyright (C) 2015  Christoph Eike, Johannes Lühring, Max Zimmermann
@@ -49,9 +50,16 @@ h_WELCOME_text = uicontrol('style', 'text', ...
 %   welcome text for user
   
 [xclick, yclick] = ginput; %first input click
-xclick = 20.*xclick - 10;
-yclick = 20.*yclick - 10;                     
 
+while length(xclick) > 6
+    [xclick, yclick] = ginput;
+end
+%     limitate amount of possible wave sources to 6
+
+xclick = 20.*xclick - 10;
+yclick = 20.*yclick - 10;
+%     fit range of click coordinates to -10 to 10
+      
 delete(h_WELCOME_text)
 clear h_WELCOME_text
 
