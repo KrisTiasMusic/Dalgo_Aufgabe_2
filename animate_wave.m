@@ -52,7 +52,14 @@ h_WELCOME_text = uicontrol('style', 'text', ...
 [xclick, yclick] = ginput; %first input click
 
 while length(xclick) > 6
+    h_TOOMUCH_text = uicontrol('style', 'text', ...
+      'string', 'Don`t click more than 6 times!', ...
+      'position', [215 255 200 15]);
+  
     [xclick, yclick] = ginput;
+
+    delete(h_TOOMUCH_text)
+    clear h_TOOMUCH_text
 end
 %     limitate amount of possible wave sources to 6
 

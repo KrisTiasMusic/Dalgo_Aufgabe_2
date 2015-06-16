@@ -81,7 +81,7 @@ set(gca,'Position',[.079 .11 .4742 .815]);
 subplot(1,2,2); %stationary wave plot
 plot(time_past,Z_wave) %plot wave form over past time
 set(gca,'Position',[.5819 .11 .4 .2]);
-xlabel('Time Past in Seconds');
+xlabel('Time past in Seconds');
 ylim([-len len]); %highest/lowest possible amplitude
 xlim([0 5]);
 grid on
